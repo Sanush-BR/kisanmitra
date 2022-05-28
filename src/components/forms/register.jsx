@@ -1,50 +1,35 @@
 import React, { Component } from "react";
+import Form from "./common/form";
+import Joi from "joi-browser";
 
-class Register extends Component {
-  state = {};
+class Register extends Form {
+  state = {
+    data: {
+      email: "",
+      password: "",
+      name: "",
+    },
+
+    errors: {},
+  };
+
+  schema = {
+    email: Joi.string().email().required().label("Email"),
+    password: Joi.string().min(5).max(15).required().label("Password"),
+    name: Joi.string().min(5).max(10).required().label("Name"),
+  };
+
+  doSubmit = () => {};
+
   render() {
     return (
-      <div style={{ marginTop: "100px", marginLeft: "500px" }}>
+      <div style={{ marginTop: "50px" }}>
         <div className="container">
-          <form>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                style={{ width: "500px" }}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                style={{ width: "500px" }}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                Name
-              </label>
-              <input
-                type="name"
-                className="form-control"
-                id="exampleInputName"
-                style={{ width: "500px" }}
-              />
-            </div>
-
-            <button className="mb-3 btn btn-primary" type="submit">
-              Sign up
-            </button>
+          <form onSubmit={this.handleSubmit}>
+            {this.renderInput("email", "Email", "text")}
+            {this.renderInput("password", "Password", "password")}
+            {this.renderInput("name", "Name", "name")}
+            {this.renderButton("Register")}
           </form>
         </div>
       </div>

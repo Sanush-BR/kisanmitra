@@ -12,57 +12,72 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <header>
-          <nav className="navbar navbar-light bg-secondary">
-            <span className="navbar-brand mb-0 h1  " style={this.styles}>
-              Kisan mitra
-            </span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <span className="navbar-brand">
+            <i>
+              <h5>
+                <b>Kisan mitra</b>
+              </h5>
+            </i>
+          </span>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-            <div style={{ marginLeft: "900px" }}>
-              <button className="btn btn-secondary sm">
-                <Link to="/" style={{ color: "white" }}>
-                  HOME
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
+                <Link className="nav-link" to="/">
+                  Home <span className="sr-only">(current)</span>
                 </Link>
-              </button>
-              <button
-                className="btn btn-secondary sm"
-                style={{ color: "white" }}
-              >
-                <Link to="/" style={{ color: "white" }}>
-                  RECOMMENDER
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/schemes">
+                  Schemes
                 </Link>
-              </button>
-            </div>
-            <ul
-              style={{
-                marginRight: "170px",
-                marginTop: "auto",
-                marginBottom: "auto",
-              }}
-            >
-              <div className="btn-group">
-                <button
-                  type="button"
-                  className="btn btn-white dropdown-toggle btn-sm"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></button>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" to="/login">
-                      login
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/register">
-                      Register
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/loans">
+                  Loans
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/types">
+                  Types
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/farmers">
+                  Farmers
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/predict">
+                  Recommendor
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">
+                  Register
+                </Link>
+              </li>
             </ul>
-          </nav>
-        </header>
+          </div>
+        </nav>
       </React.Fragment>
     );
   }

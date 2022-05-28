@@ -7,9 +7,11 @@ class Loan extends Component {
       <div className="container" style={{ marginTop: "50px" }}>
         <table className="table table-bordered">
           <thead>
-            <th>#</th>
-            <th>Bank Name</th>
-            <th>Interest</th>
+            <tr>
+              <th>#</th>
+              <th>Bank Name</th>
+              <th>Interest</th>
+            </tr>
           </thead>
           <tbody>
             <tr>

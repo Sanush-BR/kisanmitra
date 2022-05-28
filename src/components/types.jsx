@@ -13,12 +13,16 @@ class Category extends Component {
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
+              <td>1</td>
               <td>Dairy Loan</td>
             </tr>
             <tr>
-              <th scope="row">2</th>
+              <td>2</td>
               <td>Farm tractor</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Micro irrigation system</td>
             </tr>
           </tbody>
         </table>

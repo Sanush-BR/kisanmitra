@@ -9,6 +9,7 @@ import Category from "./components/types";
 import Farmer from './components/farmers';
 import Login from "./components/forms/login";
 import Register from "./components/forms/register";
+import Predict from "./components/forms/predict";
 
 
 class  App extends Component { 
@@ -25,6 +26,7 @@ class  App extends Component {
                         <Route path="/farmers" component={Farmer} exact={true}/>
                         <Route path="/login" component={Login} exact={true}/>
                         <Route path="/register" component={Register} exact={true}/>
+                        <Route path="/predict" component={Predict} exact={true}/>
                     </Switch>
                 </div>
                 <Footer/>

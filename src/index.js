@@ -8,11 +8,11 @@ import { BrowserRouter } from 'react-router-dom';
 // import '../node_modules/font-awesome/css/font-awesome.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <BrowserRouter>
     <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 

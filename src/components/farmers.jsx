@@ -30,6 +30,13 @@ class Farmer extends Component {
               <td>Hassan</td>
               <td>rakesh@gmail.com</td>
             </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Vivek</td>
+              <td>maize</td>
+              <td>Mysore</td>
+              <td>vivek@gmail.com</td>
+            </tr>
           </tbody>
         </table>
       </div>

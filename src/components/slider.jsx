@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import pic1 from "../pictures/benjamin-davies-Zm2n2O7Fph4-unsplash.jpg";
 import pic2 from "../pictures/presentsquare-FIBmUBCilEw-unsplash.jpg";
 import pic3 from "../pictures/wheat-2391348_1920.jpg";
+import pic4 from "../pictures/federico-respini-sYffw0LNr7s-unsplash.jpg";
 
 class Slider extends Component {
   render() {
@@ -35,6 +36,15 @@ class Slider extends Component {
               <img
                 className="d-block w-100"
                 src={pic3}
+                alt="Third slide"
+                width="600px"
+                height="623px"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src={pic4}
                 alt="Third slide"
                 width="600px"
                 height="623px"
