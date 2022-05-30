@@ -1,6 +1,19 @@
 import React, { Component } from "react";
+import { types } from "./services/recordService";
+
 class Category extends Component {
-  state = {};
+  state = {
+    data: [],
+  };
+
+  async componentDidMount() {
+    try {
+      const { data } = await types();
+      this.setState({ data });
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
   render() {
     return (
       <div className="container" style={{ marginTop: "50px" }}>
@@ -16,18 +29,12 @@ class Category extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Dairy Loan</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Farm tractor</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Micro irrigation system</td>
-              </tr>
+              {this.state.data.map((m) => (
+                <tr key={m._id}>
+                  <td>{this.state.data.length}</td>
+                  <td>{m.name}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -8,14 +8,13 @@ const Input = (props) => {
         </label>
         <input
           value={props.value}
-          onChange={props.onChange}
           name={props.name}
+          onChange={props.onChange}
           type={props.type}
           className="form-control"
           id={props.name}
           error={props.error}
           aria-describedby="emailHelp"
-          // style={{ width: "400px" }}
         />
         {props.error && <div className="alert alert-danger">{props.error}</div>}
       </div>

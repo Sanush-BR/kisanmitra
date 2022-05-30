@@ -1,7 +1,18 @@
 import React, { Component } from "react";
+import { loans } from "./services/recordService";
 
 class Loan extends Component {
-  state = {};
+  state = { data: [] };
+
+  async componentDidMount() {
+    try {
+      const { data } = await loans();
+      this.setState({ data });
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
   render() {
     return (
       <div className="container" style={{ marginTop: "50px" }}>
@@ -18,16 +29,13 @@ class Loan extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Canara Bank</td>
-                <td>12.5% per annum</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>State Bank Of India</td>
-                <td>12.5% per annum</td>
-              </tr>
+              {this.state.data.map((m) => (
+                <tr key={m._id}>
+                  <td>{this.state.data.length}</td>
+                  <td>{m.provider}</td>
+                  <td>{m.interest}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

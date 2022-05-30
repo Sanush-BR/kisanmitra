@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
+import { register } from "../services/userService";
+import { toast } from "react-toastify";
 
 class Register extends Form {
   state = {
@@ -19,7 +21,20 @@ class Register extends Form {
     name: Joi.string().min(5).max(10).required().label("Name"),
   };
 
-  doSubmit = () => {};
+  doSubmit = async () => {
+    const { data } = this.state;
+    try {
+      await register(data);
+      window.location = "/";
+      toast.success("Successfully Registered");
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.email = ex.response.data;
+        this.setState({ errors });
+      }
+    }
+  };
 
   render() {
     return (

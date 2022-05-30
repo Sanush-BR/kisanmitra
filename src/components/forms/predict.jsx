@@ -1,17 +1,47 @@
 import React, { Component } from "react";
+import Pform from "../forms/common/predict_form";
 import Joi from "joi-browser";
 
-class Predict extends Component {
+class Predict extends Pform {
   state = {
     data: {
       nitrogen: "",
-      phosphorous: "",
+      phosphorus: "",
       pottassium: "",
       temperature: "",
       humidity: "",
       ph: "",
-      rainfall: "",
+      rainfal: "",
     },
+    errors: {},
+  };
+
+  schema = {
+    nitrogen: Joi.number().greater(0).less(141).required().label("Nitrogen"),
+    phosphorus: Joi.number()
+      .greater(5)
+      .less(146)
+      .required()
+      .label("Phosphorous"),
+    pottassium: Joi.number()
+      .greater(5)
+      .less(206)
+      .required()
+      .label("Pottassium"),
+    temperature: Joi.number()
+      .greater(8)
+      .less(43)
+      .required()
+      .label("Temperature"),
+    humidity: Joi.number().greater(14).less(100).required().label("Humidity"),
+    ph: Joi.number().greater(0).less(15).required().label("Ph"),
+    rainfal: Joi.number().greater(20).less(299).required().label("Rainfal"),
+  };
+
+  doSubmit = () => {
+    const { data } = this.state;
+    console.log("submitted");
+    console.log(data);
   };
 
   render() {
@@ -24,102 +54,34 @@ class Predict extends Component {
             </h4>
           </div>
           <div className="my-4">
-            <div className="row">
-              <div className="col-sm">
-                <label htmlFor="nitrogen" className="form-label">
-                  Nitrogen
-                </label>
-                <input
-                  type="text"
-                  name="nitrogen"
-                  className="form-control"
-                  id="nitrogen"
-                  style={{ width: "100px" }}
-                />
-              </div>
-              <div className="col-sm">
-                <label htmlFor="phosphorus" className="form-label">
-                  Phosphorous
-                </label>
-                <input
-                  type="text"
-                  name="phosphorus"
-                  className="form-control"
-                  id="phosphorus"
-                  style={{ width: "100px" }}
-                />
-              </div>
-              <div className="col-sm">
-                <label htmlFor="pottassium" className="form-label">
-                  Pottassium
-                </label>
-                <input
-                  type="text"
-                  name="pottassium"
-                  className="form-control"
-                  id="pottassium"
-                  style={{ width: "100px" }}
-                />
-              </div>
-              <div className="col-sm">
-                <label htmlFor="temperature" className="form-label">
-                  Temperature
-                </label>
-                <input
-                  type="text"
-                  name="temperature"
-                  className="form-control"
-                  id="temperature"
-                  style={{ width: "100px" }}
-                />
-              </div>
-              <div className="col-sm">
-                <label htmlFor="humidity" className="form-label">
-                  Humidity
-                </label>
-                <input
-                  type="text"
-                  name="humidity"
-                  className="form-control"
-                  id="humidity"
-                  style={{ width: "100px" }}
-                />
-              </div>
-              <div className=" col-sm">
-                <label htmlFor="ph" className="form-label">
-                  Ph
-                </label>
-                <input
-                  type="text"
-                  name="ph"
-                  className="form-control"
-                  id="ph"
-                  style={{ width: "100px" }}
-                />
-              </div>
+            <form onSubmit={this.handleSubmit}>
+              <div className="row">
+                {this.renderInput("nitrogen", "Nitrogen")}
 
-              <div className="col-sm">
-                <label htmlFor="rainfal" className="form-label">
-                  Rainfal
-                </label>
-                <input
-                  type="text"
-                  name="rainfal"
-                  className="form-control"
-                  id="rainfal"
-                  style={{ width: "100px" }}
-                />
+                {this.renderInput("phosphorus", " Phosphorous")}
+
+                {this.renderInput("pottassium", "Pottassium")}
+
+                {this.renderInput("temperature", "Temperature")}
+
+                {this.renderInput("humidity", "Humidity")}
+
+                {this.renderInput("ph", "Ph")}
+
+                {this.renderInput("rainfal", "Rainfal")}
+
+                <div className="col-sm" style={{ marginTop: "20px" }}>
+                  <span></span>
+                  <button
+                    className="btn btn-primary "
+                    disabled={this.validate()}
+                    style={{ width: "100px", marginTop: "10px" }}
+                  >
+                    PREDICT
+                  </button>
+                </div>
               </div>
-              <div className="col-sm" style={{ marginTop: "20px" }}>
-                <span></span>
-                <button
-                  className="btn btn-primary "
-                  style={{ width: "100px", marginTop: "10px" }}
-                >
-                  PREDICT
-                </button>
-              </div>
-            </div>
+            </form>
 
             <div className="row my-5">
               <div className="col">

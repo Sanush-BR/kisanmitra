@@ -1,7 +1,20 @@
 import React, { Component } from "react";
+import { schemes } from "./services/recordService";
 
 class Schemes extends Component {
-  state = {};
+  state = {
+    data: [],
+  };
+
+  async componentDidMount() {
+    try {
+      const { data } = await schemes();
+      this.setState({ data });
+    } catch (ex) {
+      console.log("Error", ex.message);
+    }
+  }
+
   render() {
     return (
       <div className="container" style={{ marginTop: "50px" }}>
@@ -17,26 +30,16 @@ class Schemes extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>
-                  <a href="https://pmfby.gov.in/" target="_blank">
-                    Pradhan mantri bima fisal yojana(PMBFY)
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>
-                  <a href="">CM mukyamantri raita vidya nidhi</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>
-                  <a href="">Kisan credit card</a>
-                </td>
-              </tr>
+              {this.state.data.map((m) => (
+                <tr key={m._id}>
+                  <th scope="row">{this.state.data.length}</th>
+                  <td>
+                    <a href={m.link} target="_blank">
+                      {m.name}
+                    </a>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -1,7 +1,19 @@
 import React, { Component } from "react";
+import { farmers } from "./services/recordService";
 
 class Farmer extends Component {
-  state = {};
+  state = {
+    data: [],
+  };
+
+  async componentDidMount() {
+    try {
+      const { data } = await farmers();
+      this.setState({ data });
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
   render() {
     return (
       <div className="container" style={{ marginTop: "50px" }}>
@@ -19,24 +31,14 @@ class Farmer extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td scope="row">Sanjay</td>
-                <td>Rice</td>
-                <td>Tumkuru</td>
-                <td>sanju@gmail.com</td>
-              </tr>
-              <tr>
-                <td scope="row">Rakesh</td>
-                <td>wheat</td>
-                <td>Hassan</td>
-                <td>rakesh@gmail.com</td>
-              </tr>
-              <tr>
-                <td scope="row">Vivek</td>
-                <td>maize</td>
-                <td>Mysore</td>
-                <td>vivek@gmail.com</td>
-              </tr>
+              {this.state.data.map((m) => (
+                <tr key={m._id}>
+                  <td scope="row">{m.name}</td>
+                  <td>{m.crop}</td>
+                  <td>{m.place}</td>
+                  <td>{m.contact}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

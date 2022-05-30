@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Login from "./forms/login";
+// import Login from "./forms/login";
 
 class Navbar extends Component {
   styles = {
@@ -65,11 +65,11 @@ class Navbar extends Component {
                   Recommendor
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/register">
                   Register
