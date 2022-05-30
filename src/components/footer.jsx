@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
+import { FaYoutubeSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 class Footer extends Component {
@@ -20,6 +21,12 @@ class Footer extends Component {
         >
           <div className="container">
             <span className="text-dark">Jai Jawan Jai Kisan</span>
+          </div>
+          <div>
+            <FaFacebookSquare size="2rem" />
+            <FaTwitterSquare size="2rem" style={{ marginLeft: "10px" }} />
+            <FaInstagramSquare size="2rem" style={{ marginLeft: "10px" }} />
+            <FaYoutubeSquare size="2rem" style={{ marginLeft: "10px" }} />
           </div>
         </footer>
       </React.Fragment>

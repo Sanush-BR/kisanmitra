@@ -29,6 +29,9 @@ class  App extends Component {
                         <Route path="/predict" component={Predict} exact={true}/>
                     </Switch>
                 </div>
+                <div style={{marginTop:"200px"}}>
+                    
+                </div>
                 <Footer/>
             </React.Fragment>
         );
