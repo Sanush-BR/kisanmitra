@@ -32,7 +32,7 @@ class Schemes extends Component {
             <tbody>
               {this.state.data.map((m) => (
                 <tr key={m._id}>
-                  <th scope="row">{this.state.data.length}</th>
+                  <th scope="row">{this.state.data.indexOf(m) + 1}</th>
                   <td>
                     <a href={m.link} target="_blank">
                       {m.name}

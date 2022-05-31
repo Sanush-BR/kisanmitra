@@ -40,11 +40,16 @@ class Register extends Form {
     return (
       <div style={{ marginTop: "50px" }}>
         <div className="container">
+          <div>
+            <h4 style={{ fontFamily: "italic", marginBottom: "50px" }}>
+              Register Here
+            </h4>
+          </div>
           <form onSubmit={this.handleSubmit}>
             {this.renderInput("email", "Email", "text")}
             {this.renderInput("password", "Password", "password")}
             {this.renderInput("name", "Name", "name")}
-            {this.renderButton("Register")}
+            {this.renderButton("Sign Up")}
           </form>
         </div>
       </div>

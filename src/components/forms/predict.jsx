@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import Pform from "../forms/common/predict_form";
 import Joi from "joi-browser";
+import { predict_crop } from "../services/recordService";
+import axios from "axios";
 
 class Predict extends Pform {
   state = {
     data: {
       nitrogen: "",
       phosphorus: "",
-      pottassium: "",
+      potassium: "",
       temperature: "",
       humidity: "",
       ph: "",
       rainfal: "",
     },
+    crop: [],
     errors: {},
   };
 
@@ -23,11 +26,7 @@ class Predict extends Pform {
       .less(146)
       .required()
       .label("Phosphorous"),
-    pottassium: Joi.number()
-      .greater(5)
-      .less(206)
-      .required()
-      .label("Pottassium"),
+    potassium: Joi.number().greater(5).less(206).required().label("Potassium"),
     temperature: Joi.number()
       .greater(8)
       .less(43)
@@ -38,10 +37,15 @@ class Predict extends Pform {
     rainfal: Joi.number().greater(20).less(299).required().label("Rainfal"),
   };
 
-  doSubmit = () => {
+  doSubmit = async () => {
     const { data } = this.state;
-    console.log("submitted");
-    console.log(data);
+    try {
+      const result = await predict_crop(data);
+      console.log(result.data.crop);
+      this.setState({ crop: result.data.crop });
+    } catch (ex) {
+      console.log(ex.message);
+    }
   };
 
   render() {
@@ -60,7 +64,7 @@ class Predict extends Pform {
 
                 {this.renderInput("phosphorus", " Phosphorous")}
 
-                {this.renderInput("pottassium", "Pottassium")}
+                {this.renderInput("potassium", "Potassium")}
 
                 {this.renderInput("temperature", "Temperature")}
 
@@ -88,9 +92,14 @@ class Predict extends Pform {
                 <h5 style={{ fontFamily: "italic" }}>
                   RESULTANT CROP:
                   <span
-                    style={{ textTransform: "uppercase", fontFamily: "italic" }}
+                    className="badge badge-warning m-1 p-2"
+                    style={{
+                      textTransform: "uppercase",
+                      fontFamily: "italic",
+                      fontWeight: "bolder",
+                    }}
                   >
-                    Rice
+                    {this.state.crop}
                   </span>
                 </h5>
               </div>

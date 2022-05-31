@@ -31,7 +31,7 @@ class Loan extends Component {
             <tbody>
               {this.state.data.map((m) => (
                 <tr key={m._id}>
-                  <td>{this.state.data.length}</td>
+                  <th>{this.state.data.indexOf(m) + 1}</th>
                   <td>{m.provider}</td>
                   <td>{m.interest}</td>
                 </tr>
