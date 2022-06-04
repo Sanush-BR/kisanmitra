@@ -26,6 +26,7 @@ class Register extends Form {
     try {
       await register(data);
       window.location = "/";
+      
       toast.success("Successfully Registered");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

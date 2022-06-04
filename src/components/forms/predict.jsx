@@ -15,7 +15,7 @@ class Predict extends Pform {
       ph: "",
       rainfal: "",
     },
-    crop: [],
+    result: [],
     errors: {},
   };
 
@@ -41,8 +41,7 @@ class Predict extends Pform {
     const { data } = this.state;
     try {
       const result = await predict_crop(data);
-      console.log(result.data.crop);
-      this.setState({ crop: result.data.crop });
+      this.setState({ result: result.data });
     } catch (ex) {
       console.log(ex.message);
     }
@@ -99,7 +98,7 @@ class Predict extends Pform {
                       fontWeight: "bolder",
                     }}
                   >
-                    {this.state.crop}
+                    {this.state.result.crop}
                   </span>
                 </h5>
               </div>

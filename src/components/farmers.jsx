@@ -14,6 +14,7 @@ class Farmer extends Component {
       console.log(ex);
     }
   }
+
   render() {
     return (
       <div className="container" style={{ marginTop: "50px" }}>

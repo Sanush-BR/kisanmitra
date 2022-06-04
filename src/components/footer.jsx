@@ -28,6 +28,7 @@ class Footer extends Component {
             <FaInstagramSquare size="2rem" style={{ marginLeft: "10px" }} />
             <FaYoutubeSquare size="2rem" style={{ marginLeft: "10px" }} />
           </div>
+          
         </footer>
       </React.Fragment>
     );
