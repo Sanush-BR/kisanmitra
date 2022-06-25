@@ -3,6 +3,8 @@ import Pform from "../forms/common/predict_form";
 import Joi from "joi-browser";
 import { predict_crop } from "../services/recordService";
 import axios from "axios";
+// import {Spinner} from "../loader";
+import {Loader} from "../loader";
 
 class Predict extends Pform {
   state = {
@@ -17,6 +19,7 @@ class Predict extends Pform {
     },
     result: [],
     errors: {},
+    loading:false
   };
 
   schema = {
@@ -39,9 +42,11 @@ class Predict extends Pform {
 
   doSubmit = async () => {
     const { data } = this.state;
+    this.setState({loading:true});
     try {
       const result = await predict_crop(data);
       this.setState({ result: result.data });
+      this.setState({loading:false});
     } catch (ex) {
       console.log(ex.message);
     }
@@ -90,7 +95,7 @@ class Predict extends Pform {
               <div className="col">
                 <h5 style={{ fontFamily: "italic" }}>
                   RESULTANT CROP:
-                  <span
+                  {this.state.loading?(<div className="text-center"> <Loader/> </div>):(<span
                     className="badge badge-warning m-1 p-2"
                     style={{
                       textTransform: "uppercase",
@@ -99,7 +104,8 @@ class Predict extends Pform {
                     }}
                   >
                     {this.state.result.crop}
-                  </span>
+                  </span>)}
+                  
                 </h5>
               </div>
             </div>
