@@ -93,9 +93,10 @@ class Predict extends Pform {
 
             <div className="row my-5">
               <div className="col">
-                <h5 style={{ fontFamily: "italic" }}>
-                  RESULTANT CROP:
-                  {this.state.loading?(<div className="text-center"> <Loader/> </div>):(<span
+                  {this.state.loading ? (<div className="text-center"> <Loader/> </div>):(
+                  <h5 style={{ fontFamily: "italic" }}>
+                    RESULTANT CROP:
+                  <span
                     className="badge badge-warning m-1 p-2"
                     style={{
                       textTransform: "uppercase",
@@ -104,9 +105,10 @@ class Predict extends Pform {
                     }}
                   >
                     {this.state.result.crop}
-                  </span>)}
-                  
-                </h5>
+                  </span>
+                  </h5>)
+                  }
+          
               </div>
             </div>
           </div>
